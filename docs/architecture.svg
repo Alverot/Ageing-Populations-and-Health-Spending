@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="880" viewBox="0 0 1000 880" font-family="DejaVu Sans, Arial, sans-serif">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#475569"/>
+    </marker>
+    <style>
+      .layer { fill: #f8fafc; stroke: #94a3b8; stroke-width: 1.5; }
+      .box { fill: #ffffff; stroke: #64748b; stroke-width: 1.2; }
+      .db { fill: #e0f2fe; stroke: #0369a1; stroke-width: 1.2; }
+      .down { fill: #ffffff; stroke: #94a3b8; stroke-width: 1.2; stroke-dasharray: 6 4; }
+      .head { font-size: 16px; font-weight: 700; fill: #0f172a; }
+      .name { font-size: 14px; font-weight: 600; fill: #0f172a; text-anchor: middle; }
+      .sub { font-size: 12px; fill: #475569; text-anchor: middle; }
+      .muted { font-size: 12px; fill: #64748b; text-anchor: middle; }
+      .flow { font-size: 12px; fill: #475569; }
+      .line { stroke: #475569; stroke-width: 1.6; fill: none; marker-end: url(#arrow); }
+    </style>
+  </defs>
+  <rect width="1000" height="880" fill="#ffffff"/>
+
+  <!-- Layer 1 -->
+  <rect class="layer" x="20" y="20" width="960" height="140" rx="8"/>
+  <text class="head" x="36" y="46">1. External sources</text>
+  <rect class="box" x="36" y="60" width="222" height="84" rx="6"/>
+  <text class="name" x="147" y="86">World Bank API</text>
+  <text class="sub" x="147" y="106">Population 65+, GDP per</text>
+  <text class="sub" x="147" y="124">person, hospital beds</text>
+  <rect class="box" x="272" y="60" width="222" height="84" rx="6"/>
+  <text class="name" x="383" y="86">WHO files on HDX (CSV)</text>
+  <text class="sub" x="383" y="106">Life expectancy, HALE,</text>
+  <text class="sub" x="383" y="124">health spending</text>
+  <rect class="box" x="508" y="60" width="222" height="84" rx="6"/>
+  <text class="name" x="619" y="86">Our World in Data (CSV)</text>
+  <text class="sub" x="619" y="106">Long-term</text>
+  <text class="sub" x="619" y="124">life expectancy</text>
+  <rect class="down" x="744" y="60" width="222" height="84" rx="6"/>
+  <text class="name" x="855" y="86" fill="#64748b">WHO GHO API</text>
+  <text class="muted" x="855" y="106">Currently unavailable; can</text>
+  <text class="muted" x="855" y="124">replace HDX if it returns</text>
+
+  <path class="line" d="M500,160 L500,204"/>
+  <text class="flow" x="512" y="187">HTTP requests and file downloads</text>
+
+  <!-- Layer 2 -->
+  <rect class="layer" x="20" y="206" width="960" height="170" rx="8"/>
+  <text class="head" x="36" y="232">2. Import pipeline (ETL), started by run_import.py</text>
+  <rect class="box" x="36" y="246" width="190" height="60" rx="6"/>
+  <text class="name" x="131" y="271">etl/config.py</text>
+  <text class="sub" x="131" y="291">Sources and indicators</text>
+  <rect class="box" x="264" y="246" width="190" height="60" rx="6"/>
+  <text class="name" x="359" y="271">extract_*.py</text>
+  <text class="sub" x="359" y="291">One file per source</text>
+  <rect class="box" x="492" y="246" width="190" height="60" rx="6"/>
+  <text class="name" x="587" y="271">clean.py</text>
+  <text class="sub" x="587" y="291">Same table for all sources</text>
+  <rect class="box" x="720" y="246" width="190" height="60" rx="6"/>
+  <text class="name" x="815" y="271">load.py</text>
+  <text class="sub" x="815" y="291">Upsert and import log</text>
+  <path class="line" d="M226,276 L262,276"/>
+  <path class="line" d="M454,276 L490,276"/>
+  <path class="line" d="M682,276 L718,276"/>
+  <rect class="box" x="264" y="322" width="190" height="42" rx="6"/>
+  <text class="sub" x="359" y="348">data/raw/ (saved downloads)</text>
+  <path class="line" d="M359,306 L359,320"/>
+
+  <path class="line" d="M815,376 L815,420"/>
+  <text class="flow" x="827" y="403">Insert or update</text>
+
+  <!-- Layer 3 -->
+  <rect class="layer" x="20" y="422" width="960" height="120" rx="8"/>
+  <text class="head" x="36" y="448">3. PostgreSQL database: global_health</text>
+  <rect class="db" x="36" y="462" width="170" height="60" rx="6"/>
+  <text class="name" x="121" y="497">source</text>
+  <rect class="db" x="223" y="462" width="170" height="60" rx="6"/>
+  <text class="name" x="308" y="497">country</text>
+  <rect class="db" x="410" y="462" width="170" height="60" rx="6"/>
+  <text class="name" x="495" y="497">indicator</text>
+  <rect class="db" x="597" y="462" width="170" height="60" rx="6"/>
+  <text class="name" x="682" y="497">observation</text>
+  <rect class="db" x="784" y="462" width="182" height="60" rx="6"/>
+  <text class="name" x="875" y="497">import_log</text>
+
+  <path class="line" d="M500,542 L500,586"/>
+  <text class="flow" x="512" y="569">SQL queries (read only)</text>
+
+  <!-- Layer 4 -->
+  <rect class="layer" x="20" y="588" width="960" height="120" rx="8"/>
+  <text class="head" x="36" y="614">4. Backend REST API</text>
+  <rect class="box" x="36" y="628" width="450" height="64" rx="6"/>
+  <text class="name" x="261" y="654">FastAPI</text>
+  <text class="sub" x="261" y="675">/api/observations, Swagger docs at /docs</text>
+  <rect class="box" x="524" y="628" width="442" height="64" rx="6"/>
+  <text class="name" x="745" y="654">Analysis and machine learning modules</text>
+  <text class="sub" x="745" y="675">Regression and clustering (later labs)</text>
+  <path d="M486,660 L522,660" class="line"/>
+  <path d="M522,660 L488,660" class="line"/>
+
+  <path class="line" d="M261,708 L261,752"/>
+  <text class="flow" x="273" y="735">JSON and HTML</text>
+
+  <!-- Layer 5 -->
+  <rect class="layer" x="20" y="754" width="960" height="106" rx="8"/>
+  <text class="head" x="36" y="780">5. Web interface</text>
+  <rect class="box" x="36" y="794" width="930" height="50" rx="6"/>
+  <text class="name" x="501" y="815">Jinja2 templates</text>
+  <text class="sub" x="501" y="834">Tables filtered by country, indicator and years; charts later</text>
+</svg>
