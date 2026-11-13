@@ -74,3 +74,10 @@ Every prompt sent to an AI assistant to generate or change code for Lab 2, in th
   > 5.e good then one commit
 - Result: `etl/raw_files.py`, `etl/json_types.py`, `etl/extract_who.py`, `etl/extract_worldbank.py`, `etl/extract_owid.py` and `etl/extract.py` (`download_all()`, run with `python -m etl.extract`). The structure follows the lab's reference repository (github.com/feliciacricri/global-health-app), with two changes: the API addresses are read from `"api_url"` in `etl/config.py` instead of being written in each extractor, and the year window (`YEAR_FROM = 2000`, `YEAR_TO = 2024`) is defined once in `etl/config.py`. Commit "Lab 2: Raw data extractors (WHO, World Bank, OWID)".
 - Your changes: TODO
+
+## Prompt 9 – transforms
+- Tool and model: Claude Code, Claude Opus 5.5
+- Date: 2026-11-13
+- Prompt: keep it and start the transforms
+- Result: hospital beds (`SH.MED.BEDS.ZS`, 45% missing values) stays in the indicator list. New `etl/transform_who.py`, `etl/transform_worldbank.py` and `etl/transform_owid.py`, following the lab's reference repository; tested on the downloaded files. Commit "Lab 2: Raw-to-DB transform modules".
+- Your changes: TODO
