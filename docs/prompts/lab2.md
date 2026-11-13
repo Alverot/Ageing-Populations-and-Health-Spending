@@ -102,3 +102,17 @@ Every prompt sent to an AI assistant to generate or change code for Lab 2, in th
 - Prompt: Go with b
 - Result: `etl/load.py` (upserts that count inserted and updated rows separately), `etl/import_common.py` (the import loop shared by the sources, reading the indicators from `etl/config.py`), `etl/import_worldbank.py`, `etl/import_who.py`, `etl/import_owid.py`, and the migration `migrations/versions/0003_import_log_row_counts.py`, which adds `rows_inserted`, `rows_updated` and `rows_rejected` to `import_log` (teacher's request to report imported and rejected rows). Commit "Lab 2: Observation loader and per-source import scripts".
 - Your changes: TODO
+
+## Prompt 13 – Task 2.1 notebook
+- Tool and model: Claude Code, Claude Opus 5.5
+- Date: 2026-11-13
+- Prompt: yes commit and continue
+- Result: `notebooks/lab2_exploration.ipynb`: calls each extractor, transforms the saved files, inspects one indicator per source with `head()`, `info()` and `isna().sum()`, and shows the share of missing values per indicator. The notes in section 5 were written by the assistant. Commit "Lab 2: Notebook exploring raw downloads and missing values".
+- Your changes: TODO
+
+## Prompt 14 – commit the notebook
+- Tool and model: Claude Code, Claude Opus 5.5
+- Date: 2026-11-13
+- Prompt: yes commit
+- Result: the notebook was committed as it was. Commit "Lab 2: Notebook exploring raw downloads and missing values".
+- Your changes: TODO
