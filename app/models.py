@@ -71,6 +71,11 @@ class ImportLog(Base):
     source_name: Mapped[str] = mapped_column(String(100))
     indicator_code: Mapped[str] = mapped_column(String(50))
     url: Mapped[str] = mapped_column(Text)
+    # rows_loaded = rows_inserted + rows_updated; rows_rejected were dropped
+    # by the cleaning rules in etl/clean.py.
     rows_loaded: Mapped[int]
+    rows_inserted: Mapped[int] = mapped_column(server_default="0")
+    rows_updated: Mapped[int] = mapped_column(server_default="0")
+    rows_rejected: Mapped[int] = mapped_column(server_default="0")
     imported_at: Mapped[datetime] = mapped_column(DateTime(timezone=True),
                                                   server_default=func.now())

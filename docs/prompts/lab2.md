@@ -95,3 +95,10 @@ Every prompt sent to an AI assistant to generate or change code for Lab 2, in th
 - Prompt: perfect lets continue
 - Result: the proposed bounds were kept as they are. Commit "Lab 2: Observation cleaning module with IQR outlier flag".
 - Your changes: TODO
+
+## Prompt 12 – import_log row counts
+- Tool and model: Claude Code, Claude Opus 5.5
+- Date: 2026-11-13
+- Prompt: Go with b
+- Result: `etl/load.py` (upserts that count inserted and updated rows separately), `etl/import_common.py` (the import loop shared by the sources, reading the indicators from `etl/config.py`), `etl/import_worldbank.py`, `etl/import_who.py`, `etl/import_owid.py`, and the migration `migrations/versions/0003_import_log_row_counts.py`, which adds `rows_inserted`, `rows_updated` and `rows_rejected` to `import_log` (teacher's request to report imported and rejected rows). Commit "Lab 2: Observation loader and per-source import scripts".
+- Your changes: TODO
