@@ -81,3 +81,17 @@ Every prompt sent to an AI assistant to generate or change code for Lab 2, in th
 - Prompt: keep it and start the transforms
 - Result: hospital beds (`SH.MED.BEDS.ZS`, 45% missing values) stays in the indicator list. New `etl/transform_who.py`, `etl/transform_worldbank.py` and `etl/transform_owid.py`, following the lab's reference repository; tested on the downloaded files. Commit "Lab 2: Raw-to-DB transform modules".
 - Your changes: TODO
+
+## Prompt 10 – cleaning
+- Tool and model: Claude Code, Claude Opus 5.5
+- Date: 2026-11-13
+- Prompt: yes commit and start the cleaning
+- Result: `etl/clean.py` with the cleaning rules from the lab and the IQR outlier flag (Task 2.2), the `Sex` enum and the `is_outlier` column in `app/models.py`, and the Alembic migration `migrations/versions/0002_observation_is_outlier.py`. The assistant proposed plausible bounds for our nine indicators (the lab only gives bounds for its own). Commit "Lab 2: Observation cleaning module with IQR outlier flag".
+- Your changes: TODO
+
+## Prompt 11 – bounds approved
+- Tool and model: Claude Code, Claude Opus 5.5
+- Date: 2026-11-13
+- Prompt: perfect lets continue
+- Result: the proposed bounds were kept as they are. Commit "Lab 2: Observation cleaning module with IQR outlier flag".
+- Your changes: TODO

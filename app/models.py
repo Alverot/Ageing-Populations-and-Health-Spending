@@ -1,13 +1,21 @@
 from datetime import datetime
 from decimal import Decimal
+from enum import StrEnum
 
-from sqlalchemy import (BigInteger, DateTime, ForeignKey, Index, Numeric,
+from sqlalchemy import (BigInteger, Boolean, DateTime, ForeignKey, Index, Numeric,
                         SmallInteger, String, Text, UniqueConstraint, func)
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship
 
 
 class Base(DeclarativeBase):
     pass
+
+
+class Sex(StrEnum):
+    """Sex of an observation (WHO GHO codes); BOTH when a source has no split."""
+    BOTH = "BTSX"
+    MALE = "MLE"
+    FEMALE = "FMLE"
 
 
 class Source(Base):
@@ -49,6 +57,8 @@ class Observation(Base):
     year: Mapped[int] = mapped_column(SmallInteger)
     sex: Mapped[str] = mapped_column(String(10), server_default="BTSX")
     value: Mapped[Decimal | None] = mapped_column(Numeric(18, 4))
+    # Flagged by the IQR rule in etl/clean.py; outliers are kept, not dropped.
+    is_outlier: Mapped[bool] = mapped_column(Boolean, server_default="false")
     imported_at: Mapped[datetime] = mapped_column(DateTime(timezone=True),
                                                   server_default=func.now())
     country: Mapped[Country] = relationship()
