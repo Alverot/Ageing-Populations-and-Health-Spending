@@ -116,3 +116,24 @@ Every prompt sent to an AI assistant to generate or change code for Lab 2, in th
 - Prompt: yes commit
 - Result: the notebook was committed as it was. Commit "Lab 2: Notebook exploring raw downloads and missing values".
 - Your changes: TODO
+
+## Prompt 15 – Task 2.4 country and website check
+- Tool and model: Claude Code, Claude Opus 5.5
+- Date: 2026-11-13
+- Prompt: (answers to the assistant's questions about the country and year for the comparison, and who checks the websites) Romania 2023 (Recommended); Claude fetches the pages
+- Result: the assistant ran the lab's overview and data quality queries. It could not read the values from the three websites, because they draw their charts and tables with JavaScript, so it gave the stored values and the links instead. No code changed.
+- Your changes: TODO
+
+## Prompt 16 – website values
+- Tool and model: Claude Code, Claude Opus 5.5
+- Date: 2026-11-13
+- Prompt: yes the numbers are the sam just rounded up (i opend the sites)
+- Result: `docs/lab2_results.md` with the results and explanations for Tasks 2.2, 2.3 and 2.4. The three website values were checked by me; the explanations were written by the assistant. Commit "Lab 2: Data quality checks and results".
+- Your changes: TODO
+
+## Prompt 17 – results approved
+- Tool and model: Claude Code, Claude Opus 5.5
+- Date: 2026-11-13
+- Prompt: yep its ok
+- Result: `docs/lab2_results.md` committed as it was. Commit "Lab 2: Data quality checks and results".
+- Your changes: TODO
