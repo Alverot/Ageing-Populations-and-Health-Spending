@@ -36,3 +36,41 @@ Every prompt sent to an AI assistant to generate or change code for Lab 2, in th
   > 7. yep commit
 - Result: `alembic` added to `requirements.txt`, `app/create_tables.py` removed (Alembic now creates the tables), the generated `migrations/README` deleted, this prompts file started. Commit "Lab 2: Alembic setup with baseline migration".
 - Your changes: TODO
+
+## Prompt 5 – WHO source
+- Tool and model: Claude Code, Claude Opus 5.5
+- Date: 2026-11-13
+- Prompt: (answer to the assistant's question whether to use the WHO GHO API, which worked again, or keep the WHO CSV files from HDX) WHO API (Recommended)
+- Result: WHO data is now downloaded from the GHO OData API instead of HDX. Commit "Lab 2: Raw data extractors (WHO, World Bank, OWID)".
+- Your changes: TODO
+
+## Prompt 6 – source settings in etl/config.py
+- Tool and model: Claude Code, Claude Opus 5.5
+- Date: 2026-11-13
+- Prompt:
+  > Small thing remember that we need to use data from at least 2 sources with the posibility in the future to be easy to conect more. Also o dont whant to have data only for romania, the point is to be able to compare more countries
+  > 3.a go with who
+  > 3.b ok
+  > 3.c sure
+  > 3.d idk its some small changes i whink its ok if they go this time in the same commit
+- Result: in `etl/config.py` the source key `who_hdx` became `who`, with the GHO API name and link, and the comment at the top explains how to add a new source. Commit "Lab 2: Raw data extractors (WHO, World Bank, OWID)".
+- Your changes: TODO
+
+## Prompt 7 – commit and push plan
+- Tool and model: Claude Code, Claude Opus 5.5
+- Date: 2026-11-13
+- Prompt: A, and we push everything at the end
+- Result: the `config.py` change goes in the extractors commit; everything is pushed at the end of the lab. No code changed.
+- Your changes: TODO
+
+## Prompt 8 – extractors
+- Tool and model: Claude Code, Claude Opus 5.5
+- Date: 2026-11-13
+- Prompt:
+  > 5.a follow the reference structure, but make the changes in 5b and 5c
+  > 5.b go with you sugestion
+  > 5.c ok
+  > 5.d ok do that
+  > 5.e good then one commit
+- Result: `etl/raw_files.py`, `etl/json_types.py`, `etl/extract_who.py`, `etl/extract_worldbank.py`, `etl/extract_owid.py` and `etl/extract.py` (`download_all()`, run with `python -m etl.extract`). The structure follows the lab's reference repository (github.com/feliciacricri/global-health-app), with two changes: the API addresses are read from `"api_url"` in `etl/config.py` instead of being written in each extractor, and the year window (`YEAR_FROM = 2000`, `YEAR_TO = 2024`) is defined once in `etl/config.py`. Commit "Lab 2: Raw data extractors (WHO, World Bank, OWID)".
+- Your changes: TODO
